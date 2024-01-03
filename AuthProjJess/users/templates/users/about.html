@@ -1,0 +1,175 @@
+<!-- images/gallery.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+    <title>{% block title %}CEBU TRANSPORT{% endblock %}</title>
+    <style>
+
+.reach{
+color: white;
+ font-size: 20px;
+ font-family: Poppins;
+ font-weight: 700;
+ word-wrap: break-word
+}
+.hear{
+color: white;
+ font-size: 20px;
+ font-family: Poppins;
+ font-weight: 700;
+ word-wrap: break-word
+}
+.submit{
+color: white;
+ font-size: 20px;
+ font-family: Poppins;
+ font-weight: 700;
+ word-wrap: break-word
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <nav>
+              <ul>
+                <li><a href="{% url 'home' %}">HOME</a></li>
+                <li><a href="{% url 'billing' %}">BILLING</a></li>
+                <li><a href="{% url 'explore' %}">EXPLORE</a></li>
+                <li><a href="{% url 'about' %}" style="margin-right: 30px;" >ABOUT US</a></li>
+              </ul>
+            </nav>
+            <div class="logo"><img src="{% static 'images/cb.png' %}" alt="logo" style="width: 50px; height: 50px; border-radius: 50px; margin-top: 10px;">CEBU TRANSPORT</div>
+            <nav>
+              <ul>
+                <li style="margin-left: 40px;">{% if request.user.is_authenticated %}
+                  <p style="color: cyan; font-weight: bold; font-size: 16px;">{{request.user}}!</p></li>
+                {% endif %}
+                <li><a href="{% url 'log_out' %}" class="logout-button" style="margin-left: 30px; translate: 0 20%;">LOG OUT</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div style="width: 100%; height: 100%; position: relative">
+            <div style="width: 1249px; height: 202px; left: 30px; top: 448px; position: absolute">
+                <div style="width: 1249px; height: 202px; left: 0px; top: 0px; position: absolute; background: rgba(0, 0, 0, 0.70); border-radius: 20px"></div>
+                <div style="left: 77px; top: 22px; position: absolute; color: white; font-size: 20px; font-family: Poppins; font-weight: 700; word-wrap: break-word">Reach  out to us!</div>
+                <img class="image" style="width: 83px; height: 80px; left: 57px; top: 76px; position: absolute; background: linear-gradient(0deg, white 0%, white 100%); box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.10); border-radius: 65536px; border: 8px white solid" src="{% static 'images/profile.png' %}" />
+                <img class="image" style="width: 83px; height: 80px; left: 171px; top: 76px; position: absolute;background: linear-gradient(0deg, white 0%, white 100%); box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.10); border-radius: 65536px; border: 8px white solid" src="{% static 'images/profile.png' %}" />
+                <div style="width: 201px; height: 0px; left: 314px; top: 1px; position: absolute; transform: rotate(90deg); transform-origin: 0 0; border: 1px #C9C7C7 solid"></div>
+                <div style="left: 339px; top: 24px; position: absolute; color: white; font-size: 20px; font-family: Poppins; font-weight: 700; word-wrap: break-word">We want to hear from you, </div>
+                <input type="text" class="custom-textfield" id="MyInput" style="font-size: 20px;">
+                <button class="custom-button" onclick="SubmitAndClear()">
+                  <div class="button-background"></div>
+                  <div class="button-text">Submit</div>
+                </button>
+
+    <script>
+  function SubmitAndClear() {
+  // Add your alert message or any other functionality here
+  alert('Feature Under Development!');
+
+  // Clear the input field
+  document.getElementById('MyInput').value = '';
+}
+</script>
+            </div>
+            
+
+
+
+            <div style="width: 505px; height: 369px; left: 0px; top: 0px; position: absolute">
+                <img style="width: 276px; height: 272px; left: 0px; top: 97px; position: absolute; border-radius: 9999px" src="{% static 'images/cb.png' %}" />
+                <div style="left: 0px; top: 0px; position: absolute; color: black; font-size: 32px; font-family: Poppins; font-weight: 700; word-wrap: break-word">WELCOME TO CEBU TRANSPORT</div>
+            </div>
+
+            <div class="container1">
+              <div class="box gray">
+                <div class="inner-box">
+                  <div class="heading">VISION</div>
+                  <p class="content">
+                      <strong>Vision:</strong><br>
+                      "To be the seamless link that propels Cebu's transportation into the future, creating a connected and convenient travel experience for all."
+                  </p>
+                </div>
+              </div>
+              <div class="box gray">
+                <div class="inner-box">
+                  <div class="heading">MISSION</div>
+                  <p class="content">
+                      <strong>Mission:</strong><br>
+                      "We strive to revolutionize public transportation through innovative solutions, leveraging technology to ensure every journey with Cebu Transport is safe, efficient, and delightful."
+                  </p>
+                </div>
+              </div>
+              <div class="box gray">
+                <div class="inner-box">
+                  <div class="heading">GOALS</div>
+                  <p class="content">
+                      <strong>Enhanced Accessibility:</strong><br>
+                      Enable effortless access to transportation services, ensuring connectivity across Cebu.<br>
+                      <strong>Digital Convenience:</strong><br>
+                      Spearhead the transition to a cashless system, offering a hassle-free payment experience through Gcash.<br>
+                      <strong>Customer-Centric Service:</strong><br>
+                      Prioritize customer satisfaction by providing reliable, punctual, and comfortable transportation services.<br>
+                      <strong>Innovation in Travel:</strong><br>
+                      Continuously invest in technology and innovation to evolve our services and enhance the overall travel experience.<br>
+                  </p>
+                </div>
+              </div>
+              <div class="box gray">
+                <div class="inner-box">
+                  <div class="heading">OUTCOME</div>
+                  <p class="content">
+                      <strong>"By realizing our vision, achieving our mission, and meeting our goals, we envision a Cebu where commuting is not just a necessity but a joyous and seamless part of everyday life. Our commitment to innovation, convenience, and customer satisfaction will pave the way for a future where transportation is synonymous with efficiency and excellence."</strong>
+                  </p>
+                </div>
+              </div>
+          </div>
+
+
+
+        </div>
+</div>
+
+<div style="width: 100%; height: 100%; position: relative">
+    <div style="width: 100%; height: 201px; left: 0px; top: 0px; position: absolute; background: #1C1C1C"></div>
+    <div class="footer" style="width: 453.47px; height: 126px; left: 405px; top: 38px; position: absolute">
+        <div style="width: 445.16px; left: 6.64px; top: 30px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap: break-word">jessanthony.tahil10@gmail.com</div>
+        <div style="width: 450.15px; left: 3.32px; top: 78px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap: break-word">felixbertoremonde3@gmail.com</div>
+        <div style="width: 220.92px; left: 0px; top: 54px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap: break-word">+630503859003</div>
+        <div style="width: 220.92px; left: 0px; top: 102px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap: break-word">+630503859003</div>
+        <div style="width: 393.67px; left: 3.32px; top: 0px; position: absolute; color: white; font-size: 20px; font-family: Poppins; font-weight: 700; word-wrap: break-word">CONTACT US | SUPPORT</div>
+        </div>
+        <div class="footer2">
+          <div style="left: 962px; top: 28px; position: absolute; color: white; font-size: 20px; font-family: Poppins; font-weight: 700; word-wrap: break-word">Let us know!</div>
+        <img style="width: 255px; height: 146px; left: 119px; top: 28px; position: absolute" src="{% static 'images/logo_ver.jpg' %}" />
+        <a href="https://www.facebook.com/"><img class="image" style="width: 54px; height: 54px; left: 720px; top: 113px; position: absolute; border-radius: 10px;" src="{% static 'images/Facebook_icon.jpg' %}" /></a>
+      <a href="https://www.instagram.com//"><img class="image" style="width: 54px; height: 54px; left: 858px; top: 113px; position: absolute; border-radius: 10px;" src="{% static 'images/insta.jpg' %}" /></a>
+      <a href="https://twitter.com/?lang=en"><img class="image" style="width: 54px; height: 54px; left: 789px; top: 113px; position: absolute; border-radius: 10px;" src="{% static 'images/twiiter.png' %}" /></a>
+        <div style="left: 958px; top: 149px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap:    break-word">All Rights Reserved © Cebu Transport @ 2023</div>
+        <div class="submit-section">
+          <button class="submit-button" onclick="submitAndClear()">SUBMIT</button>
+          <textarea class="developer-note" id="developerNote" placeholder="To developer,"></textarea>
+      </div>
+      
+      <script>
+      function submitAndClear() {
+          // Add your alert message or any other functionality here
+          alert('Feature Under Development!');
+      
+          // Clear the textarea
+          document.getElementById('developerNote').value = '';
+      }
+      </script>
+      
+  </div>
+  
+  </div>
+</body>
+</html>

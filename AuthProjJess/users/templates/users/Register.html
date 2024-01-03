@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  
+  <link rel="stylesheet" type="text/css" href="{% static 'css/reg.css' %}">
+  <title>{% block title %}REGISTRATION{% endblock %}</title>
+
+  {% block css %}
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+    body {  
+  background-image: url("../../static/images/constellation.jpg");
+  background-position: center;
+  background-size: cover;
+}
+  </style>
+  {% endblock %}
+
+</head>
+<body>
+  
+  <div id="header"><h2 style="font-family: 'Poppins', sans-serif;">Sign UP to My MEMESITE</h2><p>Version 1.0</p></div>
+
+{% block content %}
+<div class="container">
+  <form method="post" id="form" action="" >
+    {% csrf_token %}
+      <h1>Registration</h1>
+      <div class="input-control">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" placeholder="ex.meme1234">
+          <div class="error"></div>
+      </div>
+      <div class="input-control">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="text" placeholder="ex.meme@gmail.com">
+          <div class="error"></div>
+      </div>
+      <!-- <div class="form-group">
+        <label for="{{ form.email.id_for_label }}">Email:</label>
+        {{ form.Email }}
+      </div> -->
+      <div class="input-control">
+          <label for="password">Password</label>
+          <input id="password"name="password" type="password">
+          <div class="error"></div>
+      </div>
+      <div class="input-control">
+          <label for="password2">Confirm Password</label>
+          <input id="password2"name="password2" type="password">
+          <div class="error"></div>
+      </div>
+      <button class="btn">Sign Up</button>
+      <p><a href="{% url 'home' %}">Back</a> </p>
+  </form>
+</div>
+{% endblock %}
+{% block script %}
+<script src="{% static 'js/reg.js' %}"></script> 
+{% endblock %}
+</body>
+</html> 

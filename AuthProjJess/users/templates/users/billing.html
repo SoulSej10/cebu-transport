@@ -1,0 +1,215 @@
+<!-- emoji.html-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    {% load static %}
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/billing.css' %}">
+    
+    <title>{% block title %}CEBU TRANSPORT{% endblock %}</title>
+    <style>
+        .carousel-container {
+            position: absolute;
+            top: 20px;
+            bottom: 20px;
+            left: 30px;
+            width: 630px;
+            height: 590px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 1.5s ease-in-out;
+        }
+
+        .carousel-image {
+            width: 630px;
+            height: 630px;
+            margin-right: 10px; /* Adjust the margin as needed */
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #bbb;  /* Color of inactive dots */
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #717171;  /* Color of active dot */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <div class="navbar">
+        <nav>
+          <ul>
+            <li><a href="{% url 'home' %}">HOME</a></li>
+            <li><a href="{% url 'billing' %}"> BILLING</a></li>
+            <li><a href="{% url 'explore' %}">EXPLORE</a></li>
+            <li><a href="{% url 'about' %}" style="margin-right: 30px;" >ABOUT US</a></li>
+          </ul>
+        </nav>
+        <div class="logo"><img src="{% static 'images/cb.png' %}" alt="logo" style="width: 50px; height: 50px; border-radius: 50px; margin-top: 10px;">CEBU TRANSPORT</div>
+        <nav>
+          <ul>
+            <li style="margin-left: 40px;">{% if request.user.is_authenticated %}
+              <p style="color: cyan; font-weight: bold; font-size: 16px;">{{request.user}}!</p></li>
+            {% endif %}
+            <li><a href="{% url 'log_out' %}" class="logout-button" style="margin-left: 30px; translate: 0 20%;">LOG OUT</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="container2">
+        
+        <div class="background-overlay"></div>
+        <!-- Left side carousel -->
+       
+        <div class="carousel-container">
+          <div class="carousel-images" id="carouselImages">
+              <!-- Add your carousel images here -->
+              <img class="carousel-image" src="{% static 'images/ad1.jpg' %}" alt="Ad 1">
+              <img class="carousel-image" src="{% static 'images/ad2.png' %}" alt="Ad 2">
+              <img class="carousel-image" src="{% static 'images/ad3.jpg' %}" alt="Ad 3">
+              <img class="carousel-image" src="{% static 'images/ad4.jpg' %}" alt="Ad 4">
+              <img class="carousel-image" src="{% static 'images/ad5.jpg' %}" alt="Ad 5">
+              <img class="carousel-image" src="{% static 'images/ad6.jpg' %}" alt="Ad 6">
+              <img class="carousel-image" src="{% static 'images/ad7.png' %}" alt="Ad 7">
+              <img class="carousel-image" src="{% static 'images/ad8.jpg' %}" alt="Ad 8">
+              <img class="carousel-image" src="{% static 'images/ad9.png' %}" alt="Ad 9">
+              <!-- Add more images as needed -->
+          </div>
+          <div class="carousel-dots" id="carouselDots"></div>
+      </div> 
+       
+      <script>
+        const carouselImages = document.getElementById('carouselImages');
+        const dotsContainer = document.getElementById('carouselDots');
+        const imageWidth = 630;  /* Adjust the width as needed */
+        const displayTime = 2000;  /* Adjust the display time in milliseconds */
+
+        let currentIndex = 0;
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % carouselImages.children.length;
+            const transformValue = -currentIndex * imageWidth;
+            carouselImages.style.transform = `translateX(${transformValue}px)`;
+            updateDots();
+            setTimeout(nextImage, displayTime);
+        }
+
+        function updateDots() {
+            const dots = Array.from(dotsContainer.children);
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function createDots() {
+            const dotCount = carouselImages.children.length;
+            for (let i = 0; i < dotCount; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        // Start the auto-scrolling
+        setTimeout(nextImage, displayTime);
+
+        // Create initial dots
+        createDots();
+    </script>
+    <!-- <div style="display: flex; justify-content: flex-start; align-items: center; width: 600px; height: 100px; margin-left: 670px; padding-top: 20px; padding-bottom: 5px;">
+      <img src="{% static 'images/logo_ver.jpg' %}" alt="" style="width: 200px; height: 100px; border-radius: 10px; position: absolute;">
+      <strong style="color: white; margin-left: 20px; font-size: 25px; width: 380px;">A Great way to save you the Hassle!</strong>
+  </div> -->
+  
+        <div style="display: flex; justify-content: flex-start; align-items: center; width: 600px; height: 100px; margin-left: 670px; padding-top: 20px; padding-bottom: 5px;">
+          <img src="{% static 'images/logo_ver.jpg' %}" alt="" style="width: 200px; height: 100px; border-radius: 10px;  position: absolute;">
+          <strong style="position: relative; z-index: 1; text-align: center;color: white; margin-left: 180px; font-size: 25px; width: 380px;">A Great way to save you <br> the Hassle!</strong>
+      </div>
+      
+
+        <!-- <div><img src="{% static 'images/logo_ver.jpg' %}" alt="" style="width: 200px; height: 100px; margin-left: 670px; border-radius: 10px; margin-top: 20px;"><strong style="text-align: center;">aisbdi</strong></div> -->
+         
+        <div class="billing-form" style="margin-left: 320px; top: 4px;">
+            <h1>Billing Form</h1>
+
+            <!-- bus_ticket_signed_up.html -->
+
+          <form method="post" action="{% url 'bus_ticket_signed_up' %}" class="form">
+            {% csrf_token %}
+            {{ form.fullname }}
+            {{ form.origin }}
+            {{ form.destination }}
+            {{ form.date }}
+            {{ form.bus_type }}
+            {{ form.discount }}
+            <button type="submit">Purchase Ticket (GCASH)</button>
+          </form>
+
+        </div>
+        <div class="empty-box"></div>
+    </div>
+
+    </div>
+
+    
+
+
+    <div style="width: 100%; height: 100%; position: relative">
+      <div style="width: 100%; height: 201px; left: 0px; top: 0px; position: absolute; background: #1C1C1C"></div>
+      <div class="footer" style="width: 453.47px; height: 126px; left: 405px; top: 38px; position: absolute">
+          <div style="width: 445.16px; left: 6.64px; top: 30px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap: break-word">jessanthony.tahil10@gmail.com</div>
+          <div style="width: 450.15px; left: 3.32px; top: 78px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap: break-word">felixbertoremonde3@gmail.com</div>
+          <div style="width: 220.92px; left: 0px; top: 54px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap: break-word">+630503859003</div>
+          <div style="width: 220.92px; left: 0px; top: 102px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap: break-word">+630503859003</div>
+          <div style="width: 393.67px; left: 3.32px; top: 0px; position: absolute; color: white; font-size: 20px; font-family: Poppins; font-weight: 700; word-wrap: break-word">CONTACT US | SUPPORT</div>
+      </div>
+      <div class="footer2">
+        <div style="left: 962px; top: 28px; position: absolute; color: white; font-size: 20px; font-family: Poppins; font-weight: 700; word-wrap: break-word">Let us know!</div>
+      <img style="width: 255px; height: 146px; left: 119px; top: 28px; position: absolute" src="{% static 'images/logo_ver.jpg' %}" />
+      <a href="https://www.facebook.com/"><img class="image" style="width: 54px; height: 54px; left: 720px; top: 113px; position: absolute; border-radius: 10px;" src="{% static 'images/Facebook_icon.jpg' %}" /></a>
+      <a href="https://www.instagram.com//"><img class="image" style="width: 54px; height: 54px; left: 858px; top: 113px; position: absolute; border-radius: 10px;" src="{% static 'images/insta.jpg' %}" /></a>
+      <a href="https://twitter.com/?lang=en"><img class="image" style="width: 54px; height: 54px; left: 789px; top: 113px; position: absolute; border-radius: 10px;" src="{% static 'images/twiiter.png' %}" /></a>
+      <div style="left: 958px; top: 149px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap:    break-word">All Rights Reserved © Cebu Transport @ 2023</div>
+      <div class="submit-section">
+        <button class="submit-button" onclick="submitAndClear()">SUBMIT</button>
+        <textarea class="developer-note" id="developerNote" placeholder="To developer,"></textarea>
+    </div>
+    
+    <script>
+    function submitAndClear() {
+        // Add your alert message or any other functionality here
+        alert('Feature Under Development!');
+    
+        // Clear the textarea
+        document.getElementById('developerNote').value = '';
+    }
+    </script>
+    
+</div>
+
+    </div>
+    {% block content %}{% endblock content %}
+  {% block scripts %}{% endblock  %}
+</body>
+</html>

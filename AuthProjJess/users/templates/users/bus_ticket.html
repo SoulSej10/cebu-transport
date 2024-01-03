@@ -1,0 +1,105 @@
+  <!-- bus_ticket.html -->
+  {% load static %}
+
+  {% block content %}
+      <title>Bus Ticket</title>
+      <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+            body{
+              margin: 0;
+              padding: 0;
+              font-family: "Poppins", sans-serif;
+              background-image: url("../../static/images/BUS.jpg");
+              background-position: center;
+              background-size: cover;
+              position: absolute; /* Add this */
+            }
+
+            h1{
+              display: block;
+              font-size: 2em;
+              font-weight: bold;
+              margin-left: 400px;
+              margin-right: 200px;
+              color: #E5B026;
+              transform: translate(0, 115px); /* Add this */
+              border: solid;
+            }
+
+            .ticket {
+              width: 1000px;
+              padding: 20px;
+              margin: 0 auto; /* Add this */
+              margin-left: 250px;
+              display: flex;
+              box-shadow: gray;
+              position: relative; /* Add this */
+              transform: translate(0, 15%); /* Add this */
+            }
+            .left {
+              background-color: #DEF4C6;
+              width: 40%;
+              text-align: center;
+              border-top-left-radius: 30px;
+              border-bottom-left-radius: 30px;
+            }
+            .right {
+              background-color: #F6F6F6;
+              width: 60%;
+              padding-left: 30px;
+              border-top-right-radius: 30px;
+              border-bottom-right-radius: 30px;
+            }
+            .button {
+              background-color: #B1CF5F;
+              font-family: 'Poppins';
+              color: white;
+              border: none;
+              padding: 10px 20px;
+              margin: 10px;
+              font-size: 20px;
+              cursor: pointer;
+              border-radius: 20px;
+            }
+            button:hover{
+              cursor: pointer;
+              background-color: #E5B026;
+              transition: 0.3s ease-in-out;
+            }
+            p {
+              font-family: 'Poppins';
+              font-size: 15px;
+              padding-top: 10px;
+            }
+
+            form a {
+              text-decoration: none;
+            }
+    </style>
+
+<body>
+  <h1>THANK YOU FOR CHOOSING CEBU TRANSPORT!</h1>
+  <div class="ticket">
+        <div class="left">
+          <img src="{% static 'images/cb.png' %}" alt="logo" style="width: 250px; height: 250px; border-radius: 50%; padding-top: 40px;">
+          <h2 style="font-family: 'Poppins', sans-serif; margin-top: 20px; margin-bottom: 20px; padding-top: 20px;">CEBU TRANSPORT TICKET SUMMARY</h2>
+        </div>
+
+        <div class="right">
+            <h3 style="text-align: center; font-weight:bolder; font-size: 20px;">INFORMATION DETAILS</h3> 
+            <h6 style="float: right;"><img src="{{ bus_ticket.qr_code.url }}" alt="QR Code" style="width: 200px; height: 200px; float: right; margin-right: 25px; border: solid black;"><br> Please scan the code to Pay!</h6>
+            <p><strong>Name:</strong> {{ bus_ticket.fullname }}</p>
+            <p><strong>Origin:</strong> {{ bus_ticket.origin }}</p>
+            <p><strong>Destination:</strong> {{ bus_ticket.destination }}</p>
+            <p><strong>Date:</strong> {{ bus_ticket.date }}</p>
+            <p><strong>Bus Type:</strong> {{ bus_ticket.bus_type }}</p>
+            <p><strong>Distance:</strong> {{ bus_ticket.distance }} km</p>
+            <p><strong>Total Fee:</strong> {{ bus_ticket.total_fee }}</p>
+            <div class="btn" style="text-align: center;";"> 
+            <a href="{% url 'home' %}"><button class="button">Confirm Purchase</button></a>
+          </div>
+        </div>
+    </div>
+  
+</body>
+  {% endblock %}

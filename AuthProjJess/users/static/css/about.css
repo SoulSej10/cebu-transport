@@ -1,0 +1,87 @@
+.container1 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 935px;
+  left: 341px;
+  top: 72px;
+  position: absolute;
+}
+
+.box {
+  width: 23%;
+  margin: 1%;
+  box-sizing: border-box;
+}
+
+.inner-box {
+  height: 300px; /* Set a fixed height for each box */
+  background: #D9D9D9;
+  border-radius: 25px;
+  padding: 20px;
+  overflow-y: auto; /* Enable vertical scrollbar */
+}
+
+.heading {
+  color: black;
+  font-size: 20px;
+  font-family: Poppins;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.content {
+  color: black;
+  font-family: Poppins;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.custom-textfield {
+  width: 883px;
+  height: 83px;
+  left: 335px;
+  top: 57px;
+  position: absolute;
+  background: #D9D9D9;
+  border-radius: 10px;
+}
+.custom-button {
+  width: 305px;
+  height: 37px;
+  left: 618px;
+  top: 152px;
+  position: absolute;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.button-background {
+  width: 305px;
+  height: 37px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  background: #1C7C54;
+  border-radius: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.custom-button:hover .button-background {
+  background-color: #B1CF5F;
+}
+
+.button-text {
+  left: 108px;
+  top: 4px;
+  position: absolute;
+  color: white;
+  font-size: 20px;
+  font-family: Poppins;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+

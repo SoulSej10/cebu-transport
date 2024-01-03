@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/memereq.css' %}">
+  <title>{% block title %}Document{% endblock %}</title>
+  {% block css %}
+  <style>
+    body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-image: url("../../static/images/BUS.jpg");
+  background-position: center;
+  background-size: cover;
+}
+  </style>
+  {% endblock %}
+</head>
+<body>  
+  
+<section class="container">
+  <header style="color: black; font-weight: bolder;">CEBU TRANSPORT Community Form <br> - Feature Coming Soon - <br><button> <a href="{% url 'home' %}" style="text-decoration: none; color: white;" > BACK</a></button></header>
+  {% if submitted %}
+    <center>Your Request was Submitted Successfully!</center> 
+  {% else %}
+
+  
+  <form id="form" action="" method="POST">  
+    {% csrf_token %}
+
+    
+    
+      
+      <!-- <button type="submit" value="Submit">Submit</button> -->
+  </form>
+  
+  {% endif %}
+</section>
+{% block scripts %} 
+<!--<script src="{% static 'js/memereq.js' %}"></script> -->
+{% endblock  %}
+
+</body>
+</html> 

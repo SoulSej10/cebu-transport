@@ -1,0 +1,133 @@
+{% extends 'users/base.html' %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css"> -->
+
+{% endblock %}
+
+
+<title>{% block title %}CEBU TRANSPORT{% endblock %}</title>
+
+
+
+{% block content %}
+<div class="container">
+
+  <body>
+    <div class="navbar">
+      <nav>
+        <ul>
+          <li><a href="{% url 'home' %}">HOME</a></li>
+          <li><a href="{% url 'billing' %}"> BILLING</a></li>
+          <li><a href="{% url 'explore' %}">EXPLORE</a></li>
+          <li><a href="{% url 'about' %}" style="margin-right: 30px;" >ABOUT US</a></li>
+        </ul>
+      </nav>
+      
+      <div class="logo"><img src="{% static 'images/cb.png' %}" alt="logo" style="width: 50px; height: 50px; border-radius: 50px; margin-top: 10px;">CEBU TRANSPORT</div>
+      <nav>
+        <ul>
+          <li style="margin-left: 40px;">{% if request.user.is_authenticated %}
+          <p style="color: cyan; font-weight: bold; font-size: 16px;">{{request.user}}!</p></li>
+          {% endif %}
+          
+          <li><a href="{% url 'log_out' %}" class="logout-button" style="margin-left: 30px; translate: 0 20%;">LOG OUT</a></li>
+
+        </ul>
+      </nav>
+    </div>
+
+    <div class="main-content">
+      <div class="ride-section">
+        
+        <div class="ride-box">
+          <div class="box-overlay"></div>
+        </div>
+        <div class="ride-title">SET A RIDE</div>
+<form method="post" action="{% url 'bus_ticket' %}" class="form">
+    {% csrf_token %}
+    {{ form.fullname }}
+    {{ form.origin }}
+    {{ form.destination }}
+    {{ form.date }}
+    {{ form.bus_type }}
+    <button type="submit">Purchase Ticket (GCASH)</button>
+    <h6 style="text-align: left;"><a href="{% url 'register' %}">Sign Up to get Discounts!</a></h6>
+</form>
+        
+      </div>
+
+      <div class="promo-section">
+        <div class="promo-overlay"></div>
+        <div class="promo-box">
+        </div>
+        <div class="box-overlay"></div>
+        <div class="promo-description">
+          <p>Track your Ride, know the Routes, and get the Perks! With Cebu Transport you’ll always be on your way…</p>
+        </div>
+        <a href="{% url 'memereq' %}"><button class="promo-button" type="button">JOIN MEMBERSHIP</button></a>
+
+        <img class="promo-image" src="{% static 'images/cb.png' %}" alt="Promo Image" />
+      </div>
+
+      <div class="brand-title">CEBU TRANSPORT</div>
+      <div class="brand-tagline">-Guest Section-</div>
+    </div>
+ 
+
+
+</div>
+
+<div style="width: 100%; height: 100%; position: relative">
+  <div style="width: 100%; height: 201px; left: 0px; top: 0px; position: absolute; background: #1C1C1C">
+
+  <div class="footer" style="width: 453.47px; height: 126px; left: 405px; top: 38px; position: absolute">
+      <div style="width: 445.16px; left: 6.64px; top: 30px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap: break-word">jessanthony.tahil10@gmail.com</div>
+      <div style="width: 450.15px; left: 3.32px; top: 78px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap: break-word">felixbertoremonde3@gmail.com</div>
+      <div style="width: 220.92px; left: 0px; top: 54px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap: break-word">+630503859003</div>
+      <div style="width: 220.92px; left: 0px; top: 102px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap: break-word">+630503859003</div>
+      <div style="width: 393.67px; left: 3.32px; top: 0px; position: absolute; color: white; font-size: 20px; font-family: Poppins; font-weight: 700; word-wrap: break-word">CONTACT US | SUPPORT</div>
+  </div>
+  
+      <div class="footer2">
+        <div style="left: 962px; top: 28px; position: absolute; color: white; font-size: 20px; font-family: Poppins; font-weight: 700; word-wrap: break-word">Let us know!</div>
+      <img style="width: 255px; height: 146px; left: 119px; top: 28px; position: absolute" src="{% static 'images/logo_ver.jpg' %}" />
+      <a href="https://www.facebook.com/"><img class="image" style="width: 54px; height: 54px; left: 720px; top: 113px; position: absolute; border-radius: 10px;" src="{% static 'images/Facebook_icon.jpg' %}" /></a>
+      <a href="https://www.instagram.com//"><img class="image" style="width: 54px; height: 54px; left: 858px; top: 113px; position: absolute; border-radius: 10px;" src="{% static 'images/insta.jpg' %}" /></a>
+      <a href="https://twitter.com/?lang=en"><img class="image" style="width: 54px; height: 54px; left: 789px; top: 113px; position: absolute; border-radius: 10px;" src="{% static 'images/twiiter.png' %}" /></a>
+      <div style="left: 958px; top: 149px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap:    break-word">All Rights Reserved © Cebu Transport @ 2023</div>
+      <div class="submit-section">
+        <button class="submit-button" onclick="submitAndClear()">SUBMIT</button>
+        <textarea class="developer-note" id="developerNote" placeholder="To developer,"></textarea>
+    </div>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script> -->
+    <script>
+    function submitAndClear() {
+        // Add your alert message or any other functionality here
+        alert('Feature Under Development!');
+    
+        // Clear the textarea
+        document.getElementById('developerNote').value = '';
+    }
+    </script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script> -->
+
+<script>
+  $(document).ready(function () {
+    $('.selectpicker').selectpicker();
+  });
+</script>
+    
+</div>
+
+</div>
+</div> 
+
+
+{% endblock content %}
+

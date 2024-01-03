@@ -1,0 +1,308 @@
+/* Add these styles to your existing CSS file */
+
+/* Main Content Styles */
+.main-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ride Section Styles */
+.ride-section {
+  position: absolute;
+  width: 504px;
+  height: 516px;
+  left: 0;
+  top: 100px;
+}
+
+.ride-box {
+  position: absolute;
+  width: 504px;
+  height: 516px;
+  left: 0;
+  top: 0;
+  border-radius: 30px;
+  background: white;
+  opacity: 0.5;
+}
+
+.ride-title {
+  position: absolute;
+  color: black;
+  text-align: center;
+  font-size: 25px;
+  padding-top: 20px;
+  padding-left: 180px;
+  padding-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+form {
+  text-align: left;
+  padding-top: 70px;
+  padding-left: 45px;
+  border-radius: 15px;
+  position: absolute;
+  color: black;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  word-wrap: break-word;
+}
+form input[type="text"],
+form select,
+form input[type="date"] {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box; /* Add this line to include padding in the width */
+}
+
+/* Add this to style the 'fullname' field specifically if needed */
+form input[name="fullname"] {
+  width: calc(94.3% - 20px); /* Adjust the width as necessary */
+}
+
+/* Add this to style the 'date' field specifically if needed */
+form input[type="date"] {
+  width: calc(94.3% - 20px); /* Adjust the width as necessary */
+}
+
+form button {
+  width: 90%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 300;
+}
+form button:hover {
+  background-color: #45a049;
+}
+
+
+/* Promo Section Styles */
+.promo-section {
+  position: absolute;
+  width: 795px;
+  height: 279px;
+  left: 548px;
+  top: 337px;
+}
+
+.promo-box {
+  position: absolute;
+  width: 795px;
+  height: 279px;
+  left: 0;
+  top: 0;
+  border-radius: 25px;
+  background: #3b3939;
+  opacity: 1;
+}
+
+.promo-description {
+  position: absolute;
+  width: 401px;
+  height: 133px;
+  left: 323px;
+  top: 64px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
+/* Add this style for the button */
+/* Adjust the styles to apply to the button */
+.promo-button {
+    position: absolute;
+    width: 313px;
+    height: 49px;
+    left: 342px;
+    top: 171px;
+    border: none; 
+  }
+  
+  .promo-button {
+    background: #B1CF5F;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    border: none; 
+  }
+  
+  .promo-button:hover {
+    background: #1C7C54; 
+    transition: 0.5s ease-in-out;
+  }
+  
+  .promo-button::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #1C7C54;
+    border-radius: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  .promo-button span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    z-index: 1;
+  }
+  
+
+.promo-image {
+  width: 229px;
+  height: 229px;
+  border-radius: 9999px;
+  position: absolute;
+  left: 65px;
+  top: 29px;
+}
+
+.brand-title {
+  position: absolute;
+  left: 74px;
+  top: 0;
+  color: black;
+  font-size: 40px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+.brand-tagline {
+  position: absolute;
+  left: 145px;
+  top: 60px;
+  color: black;
+  font-size: 24px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+
+
+
+.container2 {
+  position: fixed;
+  z-index: 999;
+  height: 200px;
+  width: 600px;
+  overflow: hidden;
+  margin: auto;
+  top: 0;
+  left: 750px;
+  bottom: 0;
+  right: 0;
+}
+
+
+.progressContainer {
+  position: relative;
+  width: 100%;
+  height: 5px;
+}
+
+.progress {
+  width: 0px;
+  height: 5px;
+  background-color: #7B5DED;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation-name: Progress;
+  animation-duration: 800ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+}
+
+@keyframes Progress {
+  0% {
+    width: 0px;
+  }
+
+  100% {
+    width: 172px;
+  }
+}
+
+.bar {
+  width: 40px;
+  height: 10px;
+  margin-right: 4px;
+  display: inline-block;
+  background-color: #7B5DED;
+  animation-name: Bar;
+  animation-duration: 800ms;
+  animation-timing-function: cubic-bezier(0.54, -0.01, 0.42, 0.99);
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-fill-mode: both;
+}
+
+.bar-delay-03 {
+  animation-delay: 0.03s;
+}
+
+.bar-delay-06 {
+  animation-delay: 0.06s;
+}
+
+.bar-delay-09 {
+  animation-delay: 0.09s;
+}
+
+.bar-delay-12 {
+  animation-delay: 0.12s;
+}
+
+.bar-delay-15 {
+  animation-delay: 0.15s;
+}
+
+.bar-delay-18 {
+  animation-delay: 0.18s;
+}
+
+.bar-delay-21 {
+  animation-delay: 0.21s;
+}
+
+.bar-delay-24 {
+  animation-delay: 0.24s;
+}
+
+.bar-delay-27 {
+  animation-delay: 0.27s;
+}
+
+@keyframes Bar {
+  0% {
+    background-color: #7B5DED;
+    transform: scaleY(0.5);
+  }
+
+  100% {
+    transform: scaleY(10);
+  }
+}

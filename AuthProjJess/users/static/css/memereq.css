@@ -1,0 +1,191 @@
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+button{
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #1C7C54;;
+  border-radius: 5px;
+  padding: 10px;
+}
+button:hover{
+  background: #E5B026;
+  cursor: pointer;
+}
+.container {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgb(255, 255, 255);
+}
+.container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+.container #form {
+  margin-top: 30px;
+}
+#form .input-control {
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+}
+.input-control label {
+  color: #333;
+}
+#form :where(.input-control input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.input-control input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+/* ----------Grid Styling ---------------*/
+#form .column {
+  display: grid;
+  grid-template-areas: 
+  "inputa inputb"
+  "errora errorb"
+  "inputc inputd"
+  "errorc errord";
+  column-gap: 15px;
+}
+.select-box {
+  grid-area: inputa;
+}
+.select-box > .error {
+  grid-area: errora;
+}
+#city {
+  grid-area: inputb;
+}
+#city + .error {
+  grid-area: errorb;
+}
+#region {
+  grid-area: inputc;
+}
+#region + .error {
+  grid-area: errorc;
+}
+#code {
+  grid-area: inputd;
+}
+#code + .error {
+  grid-area: errord;
+}
+/* -------------------------------------- */
+#form .gender-box {
+  margin-top: 20px;
+}
+.gender-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+#form :where(.gender-option, .gender) {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+#form .gender {
+  column-gap: 5px;
+}
+.gender input {
+  accent-color: rgb(130, 106, 251);
+}
+#form :where(.gender input, .gender label) {
+  cursor: pointer;
+}
+.gender label {
+  color: #707070;
+}
+.address :where(input, .select-box) {
+  margin-top: 15px;
+}
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}
+#form button {
+  height: 65px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #1C7C54;
+}
+#form button:hover {
+  background: #E5B026;cursor: pointer;
+}
+/*Responsive*/
+@media screen and (max-width: 500px) {
+  #form .column {
+    flex-wrap: wrap;
+  }
+  #form :where(.gender-option, .gender) {
+    row-gap: 15px;
+  }
+}
+
+
+.input-control.success input {
+  border-color: #09c372;
+}
+
+.input-control.error input {
+  border-color: #ff3860;
+}
+
+.input-control .error {
+  color: #ff3860;
+  font-size: 9px;
+  height: 10px;
+}
+
+.column .success input {
+  border-color: #09c372;
+}
+
+.column .error input {
+  border-color: #ff3860;
+}
+
+.column .error {
+  color: #ff3860;
+  font-size: 9px;
+  height: 10px;
+}

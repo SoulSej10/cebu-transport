@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  
+  <link rel="stylesheet" type="text/css" href="{% static 'css/log.css' %}">
+  <title>{% block title %}Document{% endblock %}</title> 
+  {% block css %}
+  <style>
+body {
+  background-image: url("../../static/images/constellation.jpg");
+  background-position: center;
+  background-size: cover;
+}
+  </style>
+  {% endblock %}
+</head>
+<body>
+  
+    <div id="header"><h2>Log In to My MemeSITE</h2><p>Version 1.0</p></div>
+    <div class="back"> <a href="{% url 'home' %}" style="text-decoration:none; color: #61ca7a;">BACK</a></div>
+    
+{% block content %}
+<form  method="post" id="form"> 
+  {% csrf_token %}
+    <h1> Log In </h1>
+    <div class="input-control">
+      <label for="username"></label>
+        <input id="username" type="text"  class="username"  placeholder="Username" name="username" autofocus/>
+        <div class="error"></div>
+      </div>
+      <div class="input-control">
+        <label for="Email"></label>
+        <input id="Email" type="text" class="Email" placeholder="Email" name="Email"/>
+        <div class="error"></div>
+      </div>
+      1321
+    <div class="input-control">
+      <label for="password"></label>
+        <input id="password" class="name" type="Password" name="Password" placeholder="Password"/>
+        <div class="error"></div>
+      </div>
+        <button type="submit" id="sub" >Log in</button>
+          <li><a href="#" onclick="feature()"><p>Need help with password?</p></a></li>
+          <li><a href="{% url 'Register' %}"><p>Sign Up</p></a></li>
+</form>
+  
+  <div id="footer">
+      <div id="credit"><p>Designed by → <a href="https://www.twitter.com">Jess Anthony Tahil</a>
+  </div>
+  {% block scripts %} 
+<script src="{% static 'js/log1.js' %}"></script> 
+{% endblock  %}
+
+</body>
+</html>
+{% endblock %}

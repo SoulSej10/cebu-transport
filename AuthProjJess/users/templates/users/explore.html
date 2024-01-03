@@ -1,0 +1,691 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    {% load static %}
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/explore.css' %}">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- <script src="{% static 'js/explore.js' %}"></script> -->
+    <title>{% block title %}CEBU TRANSPORT{% endblock %}</title>
+</head>
+{% block content %}
+<body>
+    <div class="container">
+      <div class="navbar">
+        <nav>
+          <ul>
+            <li><a href="{% url 'home' %}">HOME</a></li>
+            <li><a href="{% url 'billing' %}"> BILLING</a></li>
+            <li><a href="{% url 'explore' %}">EXPLORE</a></li>
+            <li><a href="{% url 'about' %}" style="margin-right: 30px;" >ABOUT US</a></li>
+          </ul>
+        </nav>
+        <div class="logo"><img src="{% static 'images/cb.png' %}" alt="logo" style="width: 50px; height: 50px; border-radius: 50px; margin-top: 10px;">CEBU TRANSPORT</div>
+        <nav>
+          <ul>
+            <li style="margin-left: 40px;">{% if request.user.is_authenticated %}
+              <p style="color: cyan; font-weight: bold; font-size: 16px;">{{request.user}}!</p></li>
+            {% endif %}
+            <li><a href="{% url 'log_out' %}" class="logout-button" style="margin-left: 30px; translate: 0 20%;">LOG OUT</a></li>
+          </ul>
+        </nav>
+      </div>
+
+
+      <div class="cardlr" style="display: flex; flex-direction: row-reverse; ">
+
+        <div class="left-container">
+            <div class="background-overlay"></div>
+            <div class="title">VEHICLE TYPE</div>
+    
+            <div class="vehicle-type" style="top: 405.58px;">
+                <button class="button-style" onclick="showSchedule('others')">OTHERS</button>
+                <div class="mre" style="text-align: center;"><a href="https://ph.commutetour.com/ph/terminal/cebu-south-bus-terminal/#csbt-bus-schedule">-For more Route Info Visit here-</a></div>
+            </div>
+            <div class="vehicle-type" style="top: 219.53px;">
+                <button class="button-style" onclick="showSchedule('jeep')">JEEP</button>
+            </div>
+            <div class="vehicle-type" style="top: 312.55px;">
+                <button class="button-style" onclick="showSchedule('fare')">FARE UPDATES</button>
+            </div>
+            <div class="vehicle-type" style="top: 126.50px;">
+                <button class="button-style" onclick="showSchedule('bus')">BUS</button>
+            </div>
+              
+            <div class="more-vehicles">-more vehicles coming soon-</div>
+        </div>
+    
+        <div class="right">
+            <div class="table-container">
+                <!-- Table for Others Schedule -->
+                <div id="others-schedule" class="col2" style="display: none;">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Route</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Route Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>02B</td>
+                        <td>South Bus Terminal</td>
+                        <td>Colon</td>
+                        <td>Pier</td>
+                      </tr>
+                      <tr>
+                        <td>09C</td>
+                        <td>Basak</td>
+                        <td>Colon</td>
+                        <td>–</td>
+                      </tr>
+                      <tr>
+                        <td>09F</td>
+                        <td>Basak</td>
+                        <td>Plaridel</td>
+                        <td>–</td>
+                      </tr>
+                      <tr>
+                        <td>10F</td>
+                        <td>Bulacao</td>
+                        <td>Colon</td>
+                        <td>–</td>
+                      </tr>
+                      <tr>
+                        <td>10H</td>
+                        <td>Bulacao</td>
+                        <td>SM</td>
+                        <td>–</td>
+                      </tr>
+                      <tr>
+                        <td>10M</td>
+                        <td>Bulacao</td>
+                        <td>SM</td>
+                        <td>Colon</td>
+                      </tr>
+                      <tr>
+                        <td>12D</td>
+                        <td>Labangon</td>
+                        <td>Colon</td>
+                        <td>–</td>
+                      </tr>
+                  </tbody>
+                  </table>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Code</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Route Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>04B</td>
+                        <td>Lahug, Plaza Housing</td>
+                        <td>Carbon</td>
+                        <td>–</td>
+                      </tr>
+                      <tr>
+                        <td>04H</td>
+                        <td>Lahug, Plaza Housing</td>
+                        <td>Carbon</td>
+                        <td>Capitol & Jones</td>
+                      </tr>
+                      <tr>
+                        <td>06B</td>
+                        <td>Guadalupe</td>
+                        <td>Carbon</td>
+                        <td>Jones</td>
+                      </tr>
+                      <tr>
+                        <td>06C</td>
+                        <td>Guadalupe</td>
+                        <td>Carbon</td>
+                        <td>–</td>
+                      </tr>
+                      <tr>
+                        <td>07B</td>
+                        <td>Banawa</td>
+                        <td>Carbon</td>
+                        <td>Capitol & Jones</td>
+                      </tr>
+                      <tr>
+                        <td>14D</td>
+                        <td>Ayala</td>
+                        <td>Colon</td>
+                        <td>Ramos</td>
+                      </tr>
+                      <tr>
+                        <td>17B</td>
+                        <td>Apas Lahug</td>
+                        <td>Carbon</td>
+                        <td>–</td>
+                      </tr>
+                      <tr>
+                        <td>17D</td>
+                        <td>Apas Lahug</td>
+                        <td>Carbon</td>
+                        <td>Taboan</td>
+                      </tr>
+                  </tbody>
+                  </table>
+                  
+                </div>
+    
+                <!-- Table for Jeep Schedule -->
+                <div id="jeep-schedule" class="col2" style="display: none;">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Route Code</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Other Routes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>01C</td>
+                        <td>Private</td>
+                        <td>Colon</td>
+                        <td>Urgello, Pier</td>
+                      </tr>
+                      <tr>
+                        <td>01K</td>
+                        <td>Urgello</td>
+                        <td>Parkmall</td>
+                        <td>Colon, SM & NBT</td>
+                      </tr>
+                      <tr>
+                        <td>02B</td>
+                        <td>South Bus Terminal</td>
+                        <td>Colon</td>
+                        <td>Pier</td>
+                      </tr>
+                      <tr>
+                        <td>03A</td>
+                        <td>Mabolo</td>
+                        <td>Carbon</td>
+                        <td>Panagdait & Manalili</td>
+                      </tr>
+                      <tr>
+                        <td>03B</td>
+                        <td>Mabolo</td>
+                        <td>Carbon</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>03L</td>
+                        <td>Mabolo</td>
+                        <td>Carbon</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>03Q</td>
+                        <td>SM</td>
+                        <td>Ayala</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>04B</td>
+                        <td>Lahug, Plaza Housing</td>
+                        <td>Carbon</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>04H</td>
+                        <td>Lahug, Plaza Housing</td>
+                        <td>Carbon</td>
+                        <td>Capitol & Jones</td>
+                      </tr>
+                      <tr>
+                        <td>04I</td>
+                        <td>Lahug, Plaza Housing</td>
+                        <td>Carbon</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>04L</td>
+                        <td>Lahug, Plaza Housing</td>
+                        <td>Ayala</td>
+                        <td>SM</td>
+                      </tr>
+                      <tr>
+                        <td>04M</td>
+                        <td>Lahug</td>
+                        <td>Ayala</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>06B</td>
+                        <td>Guadalupe</td>
+                        <td>Carbon</td>
+                        <td>Jones</td>
+                      </tr>
+                      <tr>
+                        <td>06C</td>
+                        <td>Guadalupe</td>
+                        <td>Carbon</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>06G</td>
+                        <td>Guadalupe</td>
+                        <td>C Padilla</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>06H</td>
+                        <td>Guadalupe</td>
+                        <td>SM</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>07B</td>
+                        <td>Banawa</td>
+                        <td>Carbon</td>
+                        <td>Capitol & Jones</td>
+                      </tr>
+                      <tr>
+                        <td>08F</td>
+                        <td>Alumnos</td>
+                        <td>SM</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>08G</td>
+                        <td>Alumnos</td>
+                        <td>Colon</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>09C</td>
+                        <td>Basak</td>
+                        <td>Colon</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>09F</td>
+                        <td>Basak</td>
+                        <td>Plaridel</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>09G</td>
+                        <td>Basak</td>
+                        <td>Colon</td>
+                        <td>Magallanes</td>
+                      </tr>
+                      <tr>
+                        <td>10F</td>
+                        <td>Bulacao</td>
+                        <td>Colon</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>10G</td>
+                        <td>Pardo</td>
+                        <td>Magallanes</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>10H</td>
+                        <td>Bulacao</td>
+                        <td>SM</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>10M</td>
+                        <td>Bulacao</td>
+                        <td>SM</td>
+                        <td>Colon</td>
+                      </tr>
+                      <tr>
+                        <td>11A</td>
+                        <td>Inayawan</td>
+                        <td>Colon</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>12D</td>
+                        <td>Labangon</td>
+                        <td>Colon</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>12G</td>
+                        <td>Labangon</td>
+                        <td>SM</td>
+                        <td>Colon Pier</td>
+                      </tr>
+                      <tr>
+                        <td>12I</td>
+                        <td>Labangon</td>
+                        <td>SM</td>
+                        <td>Colon & North Bus Terminal</td>
+                      </tr>
+                      <tr>
+                        <td>12L</td>
+                        <td>Labangon</td>
+                        <td>Ayala</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>13B</td>
+                        <td>Talamban</td>
+                        <td>Carbon</td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>
+                      </tbody>
+                  </table>
+                </div>
+    
+                <!-- Table for Fare Schedule -->
+                <div id="fare-schedule" class="col2" style="display: none;">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Transport</th>
+                        <th>New Min Fare</th>
+                        <th>After 4km</th>
+                        <th>After 5km</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Traditional jeep</td>
+                        <td>₱12</td>
+                        <td>₱1.80</td>
+                        <td>–</td>
+                      </tr>
+                      <tr>
+                        <td>Modern jeep</td>
+                        <td>₱14</td>
+                        <td>₱2.20</td>
+                        <td>–</td>
+                      </tr>
+                      <tr>
+                        <td>Ordinary City Bus</td>
+                        <td>₱13</td>
+                        <td>–</td>
+                        <td>₱2.25</td>
+                      </tr>
+                      <tr>
+                        <td>Ordinary Provincial Bus</td>
+                        <td>₱13</td>
+                        <td>–</td>
+                        <td>₱1.90</td>
+                      </tr>
+                      <tr>
+                        <td>Aircon City Bus</td>
+                        <td>₱15</td>
+                        <td>–</td>
+                        <td>₱2.64</td>
+                      </tr>
+                      <tr>
+                        <td>Aircon Provincial Bus (Deluxe)</td>
+                        <td>₱15</td>
+                        <td>–</td>
+                        <td>₱2.10</td>
+                      </tr>
+                      <tr>
+                        <td>Aircon Provincial Bus (Super deluxe)</td>
+                        <td>–</td>
+                        <td>–</td>
+                        <td>₱2.35</td>
+                      </tr>
+                      <tr>
+                        <td>Aircon Provincial Bus Luxury</td>
+                        <td>–</td>
+                        <td>–</td>
+                        <td>₱2.90</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="color: white; font-size: 18px;"> <br>Note: All details above are taken from this source | <a href="https://ph.commutetour.com/ph/terminal/cebu-south-bus-terminal/" style="text-decoration: none; color: greenyellow;">-Click here!-</a>  |</p>
+                </div>
+    
+                <!-- Table for Bus Schedule -->
+                <div id="bus-schedule" class="col2">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Schedule</th>
+                        <th>Fare</th>
+                        <th>Notes</th>
+                        <th>Transport</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Alcoy</td>
+                        <td>Cebu CSBT</td>
+                        <td>4:00 AM to 4:00 PM</td>
+                        <td>₱150</td>
+                        <td>1 Hour</td>
+                        <td>Bus</td>
+                      </tr>
+                      <tr>
+                        <td>Anjo World</td>
+                        <td>Parkmall</td>
+                        <td>6:00 AM to 10:00 PM</td>
+                        <td></td>
+                        <td></td>
+                        <td>Mybus</td>
+                    </tr>
+                    <tr>
+                        <td>Anjo World</td>
+                        <td>SM Seaside</td>
+                        <td>7:00 AM to 10:00 PM</td>
+                        <td></td>
+                        <td></td>
+                        <td>Mybus</td>
+                    </tr>
+                    <tr>
+                        <td>Argao</td>
+                        <td>Cebu CSBT</td>
+                        <td>4:00 AM to 6:00 PM</td>
+                        <td>₱110</td>
+                        <td>30 Minutes</td>
+                        <td>Yeoman</td>
+                    </tr>
+                    <tr>
+                        <td>Ayala Center Cebu</td>
+                        <td>Cebu Capitol</td>
+                        <td>5:30 AM to 9:30 PM</td>
+                        <td></td>
+                        <td></td>
+                        <td>Cibus</td>
+                    </tr>
+                    <tr>
+                        <td>Ayala Center Cebu</td>
+                        <td>Cebu IT Park</td>
+                        <td>5:30 AM to 9:30 PM</td>
+                        <td></td>
+                        <td></td>
+                        <td>Cibus</td>
+                    </tr>
+                    <tr>
+                        <td>Ayala Center Cebu</td>
+                        <td>CSBT</td>
+                        <td>5:30 AM to 9:30 PM</td>
+                        <td></td>
+                        <td></td>
+                        <td>Cibus</td>
+                    </tr>
+                    <tr>
+                        <td>Ayala Center Cebu</td>
+                        <td>E Mall</td>
+                        <td>5:30 AM to 9:30 PM</td>
+                        <td></td>
+                        <td></td>
+                        <td>Cibus</td>
+                    </tr>
+                    <tr>
+                        <td>Ayala Center Cebu</td>
+                        <td>Fuente Osmeña Circle</td>
+                        <td>5:30 AM to 9:30 PM</td>
+                        <td></td>
+                        <td></td>
+                        <td>Cibus</td>
+                    </tr>
+                    <tr>
+                        <td>Ayala Center Cebu</td>
+                        <td>Il Corso</td>
+                        <td>5:30 AM to 9:30 PM</td>
+                        <td></td>
+                        <td></td>
+                        <td>Cibus</td>
+                    </tr>
+                    <tr>
+                        <td>Ayala Center Cebu</td>
+                        <td>Mambaling Flyover</td>
+                        <td>5:30 AM to 9:30 PM</td>
+                        <td></td>
+                        <td></td>
+                        <td>Cibus</td>
+                    </tr>
+                    <tr>
+                        <td>Ayala Center Cebu</td>
+                        <td>SM Seaside</td>
+                        <td>5:30 AM to 9:30 PM</td>
+                        <td>₱26</td>
+                        <td></td>
+                        <td>Cibus</td>
+                    </tr>
+                    <tr>
+                        <td>Cebu Capitol</td>
+                        <td>Ayala Center Cebu</td>
+                        <td>5:30 AM to 9:30 PM</td>
+                        <td></td>
+                        <td></td>
+                        <td>Cibus</td>
+                    </tr>
+                    <tr>
+                        <td>Cebu Capitol</td>
+                        <td>Cebu Capitol</td>
+                        <td>5:30 AM to 9:30 PM</td>
+                        <td></td>
+                        <td></td>
+                        <td>Cibus</td>
+                    </tr>
+                    <tr>
+                        <td>Cebu Capitol</td>
+                        <td>Cebu IT Park</td>
+                        <td>5:30 AM to 9:30 PM</td>
+                        <td></td>
+                        <td></td>
+                        <td>Cibus</td>
+                    </tr>
+                    <tr>
+                        <td>Cebu Capitol</td>
+                        <td>CSBT</td>
+                        <td>5:30 AM to 9:30 PM</td>
+                        <td></td>
+                        <td></td>
+                        <td>Cibus</td>
+                    </tr>
+                    <tr>
+                        <td>Cebu Capitol</td>
+                        <td>E Mall</td>
+                        <td>5:30 AM to 9:30 PM</td>
+                        <td></td>
+                        <td></td>
+                        <td>Cibus</td>
+                    </tr>
+                    <tr>
+                        <td>Cebu Capitol</td>
+                        <td>Fuente Osmeña Circle</td>
+                        <td>5:30 AM to 9:30 PM</td>
+                        <td></td>
+                        <td></td>
+                        <td>Cibus</td>
+                    </tr>
+                    <tr>
+                        <td>Cebu Capitol</td>
+                        <td>Il Corso</td>
+                        <td>5:30 AM to 9:30 PM</td>
+                        <td></td>
+                        <td></td>
+                        <td>Cibus</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    
+    <script>
+        function showSchedule(vehicleType) {
+            // Hide all schedule tables
+            document.getElementById('others-schedule').style.display = 'none';
+            document.getElementById('jeep-schedule').style.display = 'none';
+            document.getElementById('fare-schedule').style.display = 'none';
+            document.getElementById('bus-schedule').style.display = 'none';
+    
+            // Show the selected schedule table
+            document.getElementById(vehicleType + '-schedule').style.display = 'block';
+        }
+    </script>
+          
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+</div>
+
+
+<div style="width: 100%; height: 100%; position: relative">
+  <div style="width: 100%; height: 201px; left: 0px; top: 0px; position: absolute; background: #1C1C1C"></div>
+  <div class="footer" style="width: 453.47px; height: 126px; left: 405px; top: 38px; position: absolute">
+      <div style="width: 445.16px; left: 6.64px; top: 30px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap: break-word">jessanthony.tahil10@gmail.com</div>
+      <div style="width: 450.15px; left: 3.32px; top: 78px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap: break-word">felixbertoremonde3@gmail.com</div>
+      <div style="width: 220.92px; left: 0px; top: 54px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap: break-word">+630503859003</div>
+      <div style="width: 220.92px; left: 0px; top: 102px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap: break-word">+630503859003</div>
+      <div style="width: 393.67px; left: 3.32px; top: 0px; position: absolute; color: white; font-size: 20px; font-family: Poppins; font-weight: 700; word-wrap: break-word">CONTACT US | SUPPORT</div>
+  </div>
+  <div class="footer2">
+    <div style="left: 962px; top: 28px; position: absolute; color: white; font-size: 20px; font-family: Poppins; font-weight: 700; word-wrap: break-word">Let us know!</div>
+  <img style="width: 255px; height: 146px; left: 119px; top: 28px; position: absolute" src="{% static 'images/logo_ver.jpg' %}" />
+  <a href="https://www.facebook.com/"><img class="image" style="width: 54px; height: 54px; left: 720px; top: 113px; position: absolute; border-radius: 10px;" src="{% static 'images/Facebook_icon.jpg' %}" /></a>
+      <a href="https://www.instagram.com//"><img class="image" style="width: 54px; height: 54px; left: 858px; top: 113px; position: absolute; border-radius: 10px;" src="{% static 'images/insta.jpg' %}" /></a>
+      <a href="https://twitter.com/?lang=en"><img class="image" style="width: 54px; height: 54px; left: 789px; top: 113px; position: absolute; border-radius: 10px;" src="{% static 'images/twiiter.png' %}" /></a>
+  <div style="left: 958px; top: 149px; position: absolute; color: white; font-size: 16px; font-family: Poppins; font-weight: 700; word-wrap:    break-word">All Rights Reserved © Cebu Transport @ 2023</div>
+  <div class="submit-section">
+    <button class="submit-button" onclick="submitAndClear()">SUBMIT</button>
+    <textarea class="developer-note" id="developerNote" placeholder="To developer,"></textarea>
+</div>
+
+<script>
+function submitAndClear() {
+    // Add your alert message or any other functionality here
+    alert('Feature Under Development!');
+
+    // Clear the textarea
+    document.getElementById('developerNote').value = '';
+}
+</script>
+
+</div>
+</div>
+</body>
+</html>
+
+{% endblock  %}

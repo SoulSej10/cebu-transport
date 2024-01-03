@@ -1,0 +1,50 @@
+{% extends 'users/base.html' %}
+
+{% load static %}
+
+{% block css %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+{% endblock %}
+
+
+<title>{% block title %}CEBU TRANSPORT{% endblock %}</title>
+<body>
+    
+<div class="body">
+    <center>
+        <h1>Requests Membership List</h1> <button style="border-radius: 10px; width: 100px;"><a href="{% url 'memereq' %}" style="text-decoration: none;"  >BACK</a></button>
+        </center>
+        {% for list in Request_list %}
+        <!-- <div class="card" >
+              <h5 class="card-title"></h5>
+              <div class="card-header" style="font-weight: bolder ;">User Request
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                <div class="card-container" >
+                <strong>{{list}}</strong>
+                    <ul>
+                    <li>Full Name: {{list.Full_name}}</li>
+                    <li>Email: {{list.Email}}</li>
+                    <li>Phone Number: {{list.Phone_Num}}</li>
+                    <li>BirthDate: {{list.Birth_Date}}</li>
+                    <li>Gender: {{list.Gender}}</li>
+                    <li>Address Line 1: {{list.AddressL1}}</li>
+                    <li>Address Line 2: {{list.AddressL2}}</li>
+                    <li>Country: {{list.Country}}</li>
+                    <li>City: {{list.City}}</li>
+                    <li>Region: {{list.Region}}</li>
+                    <li>Postal Code: {{list.Postal_Code}}</li>
+                </ul>
+                </div>
+              </p>
+            </div>
+          </div> -->
+        {% endfor %}
+</div>
+
+
+</body>
+</html>
+
